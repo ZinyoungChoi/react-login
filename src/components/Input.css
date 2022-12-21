@@ -1,0 +1,12 @@
+.title {
+    color: #fff;
+}
+.label {
+    color: #fff;
+}
+.input {
+    width: 50%;
+    height: 20px;
+    margin-left: 20px;
+    border-radius: 2px;
+}
