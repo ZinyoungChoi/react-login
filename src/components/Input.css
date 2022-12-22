@@ -1,12 +1,13 @@
-.title {
-    color: #fff;
-}
+
 .label {
-    color: #fff;
+    color: #ccc;
+    max-width: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .input {
-    width: 50%;
-    height: 20px;
-    margin-left: 20px;
+    width: 76%;
+    height: 30px;
     border-radius: 2px;
 }
