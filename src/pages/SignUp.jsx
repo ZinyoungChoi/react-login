@@ -1,34 +1,42 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import "./SignUp.css";
 
-function SignUp() {
 
+function SignUp() {
+  const selectList = ["", "devrock.co.kr", "naver.com", "google.com"]
   const [value, setValue] = useState({
     id1: "",
     pw: "",
     pwCheck: "",
     email: "",
-    emailSelect: "",
+    option: "",
   });
-  const {id1, pw, pwCheck, email, emailSelect} = value;
+  let { id1, pw, pwCheck, email, option } = value;
   const onChange = (e) => {
     const { name, value } = e.target;
     setValue({
       ...value,
       [name]: value,
     });
-  }
+  };
+
   const onReset = () => {
     setValue({
       id1: "",
       pw: "",
       pwCheck: "",
       email: "",
-      emailSelect: "",
+      option: "",
     });
   };
+  useEffect(()=>{
+    return () => {
+
+    }
+
+  },[])
   return (
     <div className="signup_wrap">
       <h1>회원가입</h1>
@@ -51,7 +59,13 @@ function SignUp() {
           </Button>
         </div>
         <div className="interval">
-          <Input label="PW" name="pw" type="password" value={pw} onChange={onChange} />
+          <Input
+            label="PW"
+            name="pw"
+            type="password"
+            value={pw}
+            onChange={onChange}
+          />
         </div>
         <div className="interval">
           <Input
@@ -63,13 +77,18 @@ function SignUp() {
           />
         </div>
         <div className="email_wrap">
-          <Input label="Email" name="email" type="text" value={email} onChange={onChange} />
+          <Input
+            label="Email"
+            name="email"
+            type="text"
+            value={email}
+            onChange={onChange}
+          />
           <span className="symbols">@</span>
-          <select className="select">
-            <option value={emailSelect}> </option>
-            <option value="devrock.co.kr">devrock.co.kr</option>
-            <option value="naver.com">naver.com</option>
-            <option value="gmail.com">gmail.com</option>
+          <select onChange={onChange} className="select" name="option" value={option}>
+            {selectList.map((item)=>(
+              <option value={item} key={item}>{item}</option>
+            ))}
           </select>
         </div>
       </div>
@@ -81,7 +100,15 @@ function SignUp() {
         >
           가입하기
         </Button>
-        <Button onClick={onReset} background="slategrey">초기화</Button>
+        <Button onClick={onReset} background="slategrey">
+          초기화
+        </Button>
+      </div>
+      <div>
+        <p>ID : {id1}</p>
+        <p>비밀번호 : {pw}</p>
+        <p>비밀번호 확인 : {pwCheck}</p>
+        <p>email : {email} @{option}</p>
       </div>
     </div>
   );
