@@ -5,15 +5,18 @@ import "./SignUp.css";
 
 
 function SignUp() {
-  const selectList = ["", "devrock.co.kr", "naver.com", "google.com"]
+  const selectList = ["", "devrock.co.kr", "naver.com", "google.com"];
+  const [option, setOption] = useState("");
+  const mailChange = (e) => {
+    setOption(e.target.value);
+  }
   const [value, setValue] = useState({
     id1: "",
     pw: "",
     pwCheck: "",
     email: "",
-    option: "",
   });
-  let { id1, pw, pwCheck, email, option } = value;
+  let { id1, pw, pwCheck, email} = value;
   const onChange = (e) => {
     const { name, value } = e.target;
     setValue({
@@ -21,22 +24,21 @@ function SignUp() {
       [name]: value,
     });
   };
-
   const onReset = () => {
     setValue({
       id1: "",
       pw: "",
       pwCheck: "",
       email: "",
-      option: "",
     });
+    setOption("");
   };
   useEffect(()=>{
-    return () => {
+    
+  },[value])
+  const onClick = () => {
 
-    }
-
-  },[])
+  }
   return (
     <div className="signup_wrap">
       <h1>회원가입</h1>
@@ -46,7 +48,7 @@ function SignUp() {
             label="ID"
             name="id1"
             type="text"
-            value={id1}
+            value={value.id1}
             onChange={onChange}
           />
           <Button
@@ -63,16 +65,16 @@ function SignUp() {
             label="PW"
             name="pw"
             type="password"
-            value={pw}
+            value={value.pw}
             onChange={onChange}
           />
         </div>
         <div className="interval">
           <Input
             label="PW체크"
-            name="pwcheck"
+            name="pwCheck"
             type="password"
-            value={pwCheck}
+            value={value.pwCheck}
             onChange={onChange}
           />
         </div>
@@ -81,11 +83,11 @@ function SignUp() {
             label="Email"
             name="email"
             type="text"
-            value={email}
+            value={value.email}
             onChange={onChange}
           />
           <span className="symbols">@</span>
-          <select onChange={onChange} className="select" name="option" value={option}>
+          <select onChange={mailChange} className="select" name="option" value={option}>
             {selectList.map((item)=>(
               <option value={item} key={item}>{item}</option>
             ))}
@@ -94,7 +96,7 @@ function SignUp() {
       </div>
       <div className="button_wrap2">
         <Button
-          onClick={() => alert("반갑습니다")}
+          onClick={onClick}
           padding="8px 34px"
           background="skyblue"
         >
