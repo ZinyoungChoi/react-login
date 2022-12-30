@@ -10,22 +10,23 @@ function SignUp() {
   const mailChange = (e) => {
     setOption(e.target.value);
   }
-  const [value, setValue] = useState({
+  const [data, setData] = useState({
     id1: "",
     pw: "",
     pwCheck: "",
     email: "",
   });
-  let { id1, pw, pwCheck, email} = value;
+  // let { id1, pw, pwCheck, email} = value;
+  // const inputValues = {value};
   const onChange = (e) => {
     const { name, value } = e.target;
-    setValue({
-      ...value,
+    setData({
+      ...data,
       [name]: value,
     });
   };
   const onReset = () => {
-    setValue({
+    setData({
       id1: "",
       pw: "",
       pwCheck: "",
@@ -33,11 +34,13 @@ function SignUp() {
     });
     setOption("");
   };
-  useEffect(()=>{
-    
-  },[value])
-  const onClick = () => {
+  
 
+  useEffect(()=>{
+    console.log(data);
+  },[data])
+  const onClick = () => {
+    
   }
   return (
     <div className="signup_wrap">
@@ -48,7 +51,7 @@ function SignUp() {
             label="ID"
             name="id1"
             type="text"
-            value={value.id1}
+            value={data.id1}
             onChange={onChange}
           />
           <Button
@@ -65,7 +68,7 @@ function SignUp() {
             label="PW"
             name="pw"
             type="password"
-            value={value.pw}
+            value={data.pw}
             onChange={onChange}
           />
         </div>
@@ -74,7 +77,7 @@ function SignUp() {
             label="PW체크"
             name="pwCheck"
             type="password"
-            value={value.pwCheck}
+            value={data.pwCheck}
             onChange={onChange}
           />
         </div>
@@ -83,7 +86,7 @@ function SignUp() {
             label="Email"
             name="email"
             type="text"
-            value={value.email}
+            value={data.email}
             onChange={onChange}
           />
           <span className="symbols">@</span>
@@ -107,10 +110,10 @@ function SignUp() {
         </Button>
       </div>
       <div>
-        <p>ID : {id1}</p>
-        <p>비밀번호 : {pw}</p>
-        <p>비밀번호 확인 : {pwCheck}</p>
-        <p>email : {email} @{option}</p>
+        <p>ID : {data.id1}</p>
+        <p>비밀번호 : {data.pw}</p>
+        <p>비밀번호 확인 : {data.pwCheck}</p>
+        <p>email : {data.email} @{option}</p>
       </div>
     </div>
   );

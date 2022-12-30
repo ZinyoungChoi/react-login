@@ -1,7 +1,7 @@
 import React from "react";
 import "./Input.css";
 
-function Input({ type, label, name, value, onChange,key }) {
+function Input({ type, label, name, value, onChange}) {
   return (
     <div className="input_wrap">
       <label className="label">
@@ -13,7 +13,6 @@ function Input({ type, label, name, value, onChange,key }) {
           name={name}
           value={value}
           onChange={onChange}
-          key={key}
         />
       </label>
     </div>
