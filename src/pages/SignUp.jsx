@@ -6,7 +6,13 @@ import "./SignUp.css";
 
 function SignUp() {
   const selectList = ["", "devrock.co.kr", "naver.com", "google.com"];
-  const [option, setOption] = useState("");
+  const [option, setOption] = useState(selectList[0]);
+  const [text, setText] = useState({
+    idtext: "",
+    pwtext: "",
+    pwctext: "",
+    emailtext: "",
+  });
   const mailChange = (e) => {
     setOption(e.target.value);
   }
@@ -16,8 +22,6 @@ function SignUp() {
     pwCheck: "",
     email: "",
   });
-  // let { id1, pw, pwCheck, email} = value;
-  // const inputValues = {value};
   const onChange = (e) => {
     const { name, value } = e.target;
     setData({
@@ -32,15 +36,32 @@ function SignUp() {
       pwCheck: "",
       email: "",
     });
-    setOption("");
+    setOption(selectList[0]);
+    setText({
+      idtext: "",
+      pwtext: "",
+      pwctext: "",
+      emailtext: "",
+    });
   };
-  
-
   useEffect(()=>{
     console.log(data);
   },[data])
+
+  const {idtext, pwtext, pwctext, emailtext} = text;
   const onClick = () => {
-    
+    setText({
+      idtext : data.id1,
+      pwtext : data.pw,
+      pwctext : data.pwCheck,
+      emailtext : data.email,
+    });
+    setData({
+      id1: "",
+      pw: "",
+      pwCheck: "",
+      email: "",
+    });
   }
   return (
     <div className="signup_wrap">
@@ -110,10 +131,10 @@ function SignUp() {
         </Button>
       </div>
       <div>
-        <p>ID : {data.id1}</p>
-        <p>비밀번호 : {data.pw}</p>
-        <p>비밀번호 확인 : {data.pwCheck}</p>
-        <p>email : {data.email} @{option}</p>
+        <p>ID : {idtext}</p>
+        <p>비밀번호 : {pwtext}</p>
+        <p>비밀번호 확인 : {pwctext}</p>
+        <p>email : {emailtext} @{option}</p>
       </div>
     </div>
   );
