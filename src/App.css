@@ -2,3 +2,11 @@
   text-align: center;
   color: #fff;
 }
+p {
+  text-align: left;
+  width: 300px;
+  margin: 20px auto;
+}
+.text {
+  margin-top: 50px;
+}

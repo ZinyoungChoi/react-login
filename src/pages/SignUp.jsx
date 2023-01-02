@@ -130,7 +130,7 @@ function SignUp() {
           초기화
         </Button>
       </div>
-      <div>
+      <div className="text">
         <p>ID : {idtext}</p>
         <p>비밀번호 : {pwtext}</p>
         <p>비밀번호 확인 : {pwctext}</p>
